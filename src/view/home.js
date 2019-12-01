@@ -43,7 +43,9 @@ export const viewHome = () => {
   <header id="header">
     <div class="logo-bars">
 
-    <li><img class="img2" src="../img/ring.png"/></li>
+    <li class="destino"><a class="text-head" href="#/login">Destinos</a></li>
+    <li class="destino"><a class="text-head" href="#/login">   </a></li>
+    <li class="experiencia"><a class="text-head" href="#/login">Experiencias</a></li>
     </div>
     <input type="checkbox" class="hide" id="toggle">  
     <nav class="colorPrincipal navbar"> 
