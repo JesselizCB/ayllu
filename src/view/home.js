@@ -67,10 +67,10 @@ export const viewHome = () => {
       <p id="home"><a class="registro" href="#/home"><img src="../img/home.png"/></a><br>Inicio</p>
       <p class="hide" id="option-rrhh"><a class="registro" ><i class="fa fa-plus-circle more-post" aria-hidden="true"></i></a><br>Nueva oportunidad</p>
 
-      <p id="option-col" ><a class="registro" ><img src="../img/resumen.png"/></a><br>Cerca</p>
+      <p id="option-col" ><a class="registro" ><img src="../img/ring.png"/></a><br>Cerca</p>
       <p id="oportunidades"><a class="registro"><img src="../img/oportunidades.png"/></a><br>Favorito</p>
       
-      <p><a href="#/login" id="cerrar" class="btn-salir"><img src="../img/chat.png"/><br>Perfil</a></p>
+      <p><a href="#/login" id="cerrar" class="btn-salir"><img src="../img/resumen.png"/><br>Perfil</a></p>
 
       
 </footer>`;
