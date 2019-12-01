@@ -2,11 +2,7 @@ import { controllerExit, createPost, changeRoute } from '../controller.js';
 // import { colaborador } from '../model/model-firebase.js';
 // import { currentUser } from "../model/model-firebase.js";
 import { viewPosts } from './post.js';
-import { currentUser } from '../model/model-firebase.js';
-import { viewOportunidad } from './oportunidad.js';
-import { viewMisPostulaciones } from './mispostulaciones.js';
-import { viewOporColaboradores } from './oportunidadesColaborador.js';
-import { viewOportunidadesrh } from './oportunidadesrh.js';
+import { currentUser } from '../model/model-firebase.js';;
 
 const headerPost = () => {
   const contentHeaderPost = document.createElement('div');
@@ -39,15 +35,14 @@ export const headerPost1 = (string) => {
 } 
 
 
-export const viewHome = (query) => {
+export const viewHome = () => {
   const homeContainer = document.createElement('div');
   homeContainer.innerHTML = '';
   
   const homeTemplate = `  
   <header id="header">
     <div class="logo-bars">
-    <label id="imagen-perfil" for="toggle"><img class="img-perfil" src="../img/Oval.png" alt="foto de perfil extraida del email, google o facebook del usuario"/></label>
-    <li><input type="search" class="search"></li>
+
     <li><img class="img2" src="../img/ring.png"/></li>
     </div>
     <input type="checkbox" class="hide" id="toggle">  
@@ -70,10 +65,10 @@ export const viewHome = (query) => {
       <p id="home"><a class="registro" href="#/home"><img src="../img/home.png"/></a><br>Inicio</p>
       <p class="hide" id="option-rrhh"><a class="registro" ><i class="fa fa-plus-circle more-post" aria-hidden="true"></i></a><br>Nueva oportunidad</p>
 
-      <p id="option-col" ><a class="registro" ><img src="../img/resumen.png"/></a><br>Mis Postulaciones</p>
-      <p id="oportunidades"><a class="registro"><img src="../img/oportunidades.png"/></a><br>Oportunidades</p>
+      <p id="option-col" ><a class="registro" ><img src="../img/resumen.png"/></a><br>Cerca</p>
+      <p id="oportunidades"><a class="registro"><img src="../img/oportunidades.png"/></a><br>Favorito</p>
       
-      <p><a href="#/login" id="cerrar" class="btn-salir"><img src="../img/chat.png"/><br>Salir</a></p>
+      <p><a href="#/login" id="cerrar" class="btn-salir"><img src="../img/chat.png"/><br>Perfil</a></p>
 
       
 </footer>`;
@@ -90,9 +85,9 @@ export const viewHome = (query) => {
   exit.addEventListener('click', controllerExit);
 
 
-  query.forEach(doc => {
+  /* query.forEach(doc => {
     main.appendChild(viewPosts(doc));
-  })
+  }) */
 
   const addUser = homeContainer.querySelector('#perfil-add');
   const rrhh = homeContainer.querySelector('#option-rrhh');
@@ -100,27 +95,6 @@ export const viewHome = (query) => {
   const btnOportunidades = homeContainer.querySelector('#oportunidades');
 
   // const misPostulations = homeContainer.querySelector('#mis-postulaciones');
-
-  if (currentUser().email.slice(0, 8) === '77921150' || currentUser().email.slice(0, 8) === '46694326') {
-    addUser.classList.remove('hide');
-  } else {
-    addUser.classList.add('hide');
-
-  }
-
-   btnOportunidades.addEventListener('click', () => {
-    if (currentUser().email.slice(0, 8) === '77921150' || currentUser().email.slice(0, 8) === '46694326') {
-      main.innerHTML = '';
-      main.appendChild(viewOportunidadesrh());
-    
-    } else {
-      main.innerHTML = '';
-      header.innerHTML='';
-     main.appendChild(viewOporColaboradores());
-     header.appendChild(headerPost1('Mis postulaciones'));
-    }
-
-  }) 
 
   addUser.addEventListener('click', () => {
     rrhh.classList.remove('hide');

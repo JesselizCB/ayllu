@@ -3,16 +3,6 @@ import { viewRegister } from "./view/register.js";
 import { viewHome } from "./view/home.js";
 import { viewPosts } from "./view/post.js";
 
-import { viewProfile } from "./view/profile.js";
-import { viewOportunidad } from "./view/oportunidad.js";
-import { viewPostulantes } from "./view/postulantes.js";
-// import { viewDetallePostsActual } from "./view/detallepostsactual.js/index.js";
-
-import {viewOportunidadesrh} from "./view/oportunidadesrh.js"
-
-import {viewMisPostulaciones} from "./view/mispostulaciones.js"
-import {viewDetallePostActual} from "./view/detallepostulacionactual.js"
-import { readPosts } from "./model/model-firestore.js";
 import { headerPost1 } from './view/home.js';
 
 const viewTmp = router => {
@@ -27,12 +17,13 @@ const viewTmp = router => {
       root.appendChild(viewRegister());
       break;
     case "#/home":
-      readPosts(call => {
+      /* readPosts(call => {
         root.innerHTML = "";
         root.appendChild(viewHome(call));
         headerPost1(call);
 
-      });
+      }); */
+      root.appendChild(viewHome());
       // root.appendChild(viewHome());
       break;
     case "#/oportunidad":

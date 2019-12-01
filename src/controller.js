@@ -52,33 +52,14 @@ const maysFirst = (string) => {
 //LOGIN
 export const controllerLogin = () => {
   window.event.preventDefault();
-  const dni1 = document.getElementById('dni').value;
-  const dni = dni1 + '@grupokonecta.pe';
+  const user = document.getElementById('user').value;
   const password = document.getElementById('password').value;
   
-  loginEmail(dni, password).then((result) => {
-
-    const modalContent = 'Recuerda :';
-    const modalParrafo = 'Actualizar tus datos para contactarnos contigo';
-    const modalFooter = document.getElementById('modalFooter');
-    modalFooter.classList.remove('hide');
-    modalMessage(modalContent, modalParrafo, '../img/documento.png');  
-       
-    changeRoute('#/home');
-
-    /*  if (result.user.emailVerified === false) {
-       document.getElementById('error').innerHTML = 'No has verificado tu dirección de email';
-     } else {
-       changeRoute('#/home');
-     } */
-  }).catch((error) => {
-    const errorMessage = error.message;
-    if (dni1 === '' || password === '') {
+    if (user === '' || password === '') {
       document.getElementById('error').innerHTML = 'Ingresa los campos completos';
     } else if (errorMessage) {
       document.getElementById('error').innerHTML = 'La contraseña no es válida o el usuario no está registrado.';
     }
-  });
 };
 const emailVerification = () => {
   currentUser().sendEmailVerification()

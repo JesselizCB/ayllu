@@ -2,7 +2,11 @@ import {
   controllerLogin,
   controllerFacebook,
   controllerGoogle,
+  changeRoute,
 } from '../controller.js';
+/* export const changeRoute = (route) => {
+  window.location.hash = route;
+}; */
 
 export const viewLogin = () => {
   const loginContainer = document.createElement('div');
@@ -10,18 +14,16 @@ export const viewLogin = () => {
   const loginTemplate = `  
   <!--<img class="logo" src="../img/circlenutri.png" alt="circulo nutricional"/>-->
   <form id="screen-login" class="flex-form">
-    <img src="../img/logotk.png" alt="logo de la web food kids"/>
-    <p class="welcome"> INICIAR SESIÓN</p>
-    <!--<p class="welcome-description"> ¡Bienvenido a la red que te ayuda con la alimentación de los engreidos de casa!</p>-->
-    <label class="text-label">DNI/Carné de extranjería</label>
-    <input class="inputs" type="email" name="correo" id="dni">
+    <img src="../img/logoAy.png" alt="logo de la web food kids"/>
+    <label class="text-label">Usuario</label>
+    <input class="inputs" type="email" name="correo" id="user">
     <label class="text-label">Contraseña</label>
     <input class="inputs" type="password" name="contrasena" id="password" >
     <p class="error" id="error"></p>
+    <label class="registro"><a class="bold" href="#/register" id="registrate">¿Olvidaste tu contraseña?</a></label>
     <button class= "btn-login" name="button" type="submit" id="login">INICIAR SESIÓN</button>
-    <a class="registro" href="#/register" id="registrate">o Activa cuenta</a>
-    <label class="registro"><a class="bold" href="#/register" id="registrate">Olvidé mi cotraseña</a></label>
-    <label class="tu-red">Tu Red profesional Konecta</label>
+    <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="register" class="register-href">Registrate aquí</span></a></p>
+    
     </form>`;
 
   loginContainer.innerHTML = loginTemplate;
@@ -31,9 +33,25 @@ export const viewLogin = () => {
   const buttonLogInFacebbok = loginContainer.querySelector('#fb');
   const buttonLogInGoogle = loginContainer.querySelector('#goog');
 
-  buttonLogInEmail.addEventListener('click', controllerLogin);
+  // buttonLogInEmail.addEventListener('click', controllerLogin);
+
   // buttonLogInFacebbok.addEventListener('click', controllerFacebook);
   // buttonLogInGoogle.addEventListener('click', controllerGoogle);
+const username = loginContainer.querySelector('#user').value;
+console.log(username);
+const password = loginContainer.querySelector('#password').value;
+console.log(password);
+
+buttonLogInEmail.addEventListener('click', () => {
+    if (username === '' || password === '') {
+      document.getElementById('error').innerHTML = 'Ingresa los campos completos';
+      changeRoute('#/home');
+    } else if(username === 'ayllu@gmail.com' && password === 'pass') {
+      alert('changemee');
+      console.log('estoy aqui');
+      changeRoute('#/home');
+    }
+  });
 
   return loginContainer;
 };
